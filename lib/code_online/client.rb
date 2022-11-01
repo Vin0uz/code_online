@@ -47,6 +47,8 @@ module CodeOnline
 
       if browser.url != HOMEPAGE_URL
         raise "Connexion to CodeOnline didn't go well!"
+      else
+        puts "Connected to codeonline ✅"
       end
     end
   end

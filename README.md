@@ -1,43 +1,55 @@
+
 # CodeOnline
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/code_online`. To experiment with that code, run `bin/console` for an interactive prompt.
+A simple browser-based API to GS1 codeonline platform.
 
-TODO: Delete this and the text above, and describe your gem
+Instead of manually create all your eans, using codeonline.fr webpage,
+you can now do it with a couple of line of code.
+
+#### ⚠️ Warning ⚠️
+This gem isn't related to GS1 teams, so it's by definition quite fragile.
+
 
 ## Installation
 
-Add this line to your application's Gemfile:
+To use it in Rails, add this line to your application's Gemfile
 
 ```ruby
-gem 'code_online'
+gem "code_online"
 ```
 
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install code_online
+To use it in a usual ruby environment, you can simply
+```ruby
+gem install "code_online"
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require "code_online"
 
-## Development
+client = CodeOnline::Client.new(email: "youremail@foo.bar", password: "unbreakable-password")
+> "Connected to codeonline ✅"
+ean = client.create_ean(product_name: "My Cool product", weight: "50")
+> "3701492718516"
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+## How it works ?
 
-## Contributing
+It's simply copying what you'd do if you were going to the web interface.
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/code_online. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/code_online/blob/main/CODE_OF_CONDUCT.md).
+_This makes it quite fragile because the web page can change anyday.._
+
+
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
-## Code of Conduct
 
-Everyone interacting in the CodeOnline project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/code_online/blob/main/CODE_OF_CONDUCT.md).
+## Contributing
+
+Contributions are always welcome! Feel free to open issues or pull requests 🙏
+
+_If you notice any security issue, please reach outbefore opening a public issue_
