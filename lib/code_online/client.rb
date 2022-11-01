@@ -4,16 +4,17 @@ module CodeOnline
     LOGIN_URL = "https://codeonline.fr/login".freeze
 
     def initialize(email:, password:)
-      @browser = Watir::Browser.new
+      @browser = ::Watir::Browser.new
 
       login(email: email, password: password)
     end
 
     def create_ean(product_name:, weight:)
+      browser.goto(HOMEPAGE_URL)
       browser.button(id: "button-basic").click
       browser.link(visible_text: "Créer un GTIN").click
 
-      browser.radio(visible_text: "de votre propre marque").select
+      browser.radio(id: "choice_0").select
       browser.button(visible_text: "J'ai compris").click
 
       browser.span(visible_text: "Équipements de Marquage Sportif").click
