@@ -4,7 +4,7 @@ module CodeOnline
     LOGIN_URL = "https://codeonline.fr/login".freeze
 
     def initialize(email:, password:)
-      @browser = ::Watir::Browser.new
+      @browser = ::Watir::Browser.new(:chrome, headless: true)
 
       login(email: email, password: password)
     end
